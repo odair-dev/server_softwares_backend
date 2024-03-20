@@ -12,3 +12,12 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Produto {
+  codigo        String   @id @default(uuid())
+  descricao     String   @db.Text
+  preco         String   @db.VarChar(255)
+  data_cadastro DateTime @default(now())
+
+  @@map("produtos")
+}
